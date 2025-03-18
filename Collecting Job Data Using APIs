@@ -1,0 +1,13 @@
+Objectives
+After completing this lab, you will be able to:
+
+Collect job data from GitHub Jobs API
+Store the collected data into an excel spreadsheet.
+Warm-Up Exercise
+Before you attempt the actual lab, here is a fully solved warmup exercise that will help you to learn how to access an API.
+
+Using an API, let us find out who currently are on the International Space Station (ISS).
+The API at http://api.open-notify.org/astros.json gives us the information of astronauts currently on ISS in json format.
+You can read more about this API at http://open-notify.org/Open-Notify-API/People-In-Space/
+
+import requests # you need this module to make an API call
