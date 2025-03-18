@@ -1,0 +1,42 @@
+Objectives
+After completing this lab, you will be able to:
+
+Collect job data from GitHub Jobs API
+Store the collected data into an excel spreadsheet.
+Warm-Up Exercise
+Before you attempt the actual lab, here is a fully solved warmup exercise that will help you to learn how to access an API.
+
+Using an API, let us find out who currently are on the International Space Station (ISS).
+The API at http://api.open-notify.org/astros.json gives us the information of astronauts currently on ISS in json format.
+You can read more about this API at http://open-notify.org/Open-Notify-API/People-In-Space/
+
+import requests # you need this module to make an API call
+api_url = "http://api.open-notify.org/astros.json" # this url gives use the astronaut data
+response = requests.get(api_url) # Call the API using the get method and store the
+                                # output of the API call in a variable called response.
+if response.ok:             # if all is well() no errors, no network timeouts)
+    data = response.json()  # store the result in json format in a variable called data
+                            # the variable data is of type dictionary.
+print(data)   # print the data just to check the output or for debugging
+{'people': [{'craft': 'ISS', 'name': 'Mark Vande Hei'}, {'craft': 'ISS', 'name': 'Pyotr Dubrov'}, {'craft': 'ISS', 'name': 'Anton Shkaplerov'}, {'craft': 'Shenzhou 13', 'name': 'Zhai Zhigang'}, {'craft': 'Shenzhou 13', 'name': 'Wang Yaping'}, {'craft': 'Shenzhou 13', 'name': 'Ye Guangfu'}, {'craft': 'ISS', 'name': 'Raja Chari'}, {'craft': 'ISS', 'name': 'Tom Marshburn'}, {'craft': 'ISS', 'name': 'Kayla Barron'}, {'craft': 'ISS', 'name': 'Matthias Maurer'}], 'message': 'success', 'number': 10}
+Print the number of astronauts currently on ISS.
+print(data.get('number'))
+10
+Print the names of the astronauts currently on ISS.
+astronauts = data.get('people')
+print("There are {} astronauts on ISS".format(len(astronauts)))
+print("And their names are :")
+for astronaut in astronauts:
+    print(astronaut.get('name'))
+There are 10 astronauts on ISS
+And their names are :
+Mark Vande Hei
+Pyotr Dubrov
+Anton Shkaplerov
+Zhai Zhigang
+Wang Yaping
+Ye Guangfu
+Raja Chari
+Tom Marshburn
+Kayla Barron
+Matthias Maurer
